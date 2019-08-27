@@ -70,6 +70,7 @@ SSPanel notification email (PUSH)
 
 然后进入网站根目录的/resources/email/news文件夹，创建Message.tpl文件，文件内容如下  
 
+```  
 <!DOCTYPE html>
 <html>
 
@@ -83,6 +84,7 @@ SSPanel notification email (PUSH)
 </body>
 
 </html>
+```  
 
 然后就是给user表新增一个字段了，登陆phpmyadmin，选中sspanel，user  
 ![](/pic/send-all-user-notices-3.png)  
