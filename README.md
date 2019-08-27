@@ -119,3 +119,7 @@ https://sspanel3.org/wp-content/uploads/2018/05/send-all-user-notices-12.png
 
 php xcat sendUserMessage ，给用户发送通知
 php xcat sendAdminMessage ，给管理员发送通知，用于测试发送效果
+
+
+Reference: https://sspanel3.org/send-all-user-notices/  
+
