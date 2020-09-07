@@ -10,8 +10,9 @@ SSPanel notification email (PUSH)
 # 步骤  
 
 ### 将'ExtMail.php'上传至 'src/Command' 覆盖源文件  
+请将 '全体通知内容' 修改为你想要通知的内容
 
-### 将'message2.tpl'上传至 'resources/email/ext'
+### 将'message2.tpl'上传至 'resources/email/ext'  
 
 然后就是给user表新增一个字段了，登陆phpmyadmin，选中sspanel，user  
 ![](/pic/send-all-user-notices-3.png)  
