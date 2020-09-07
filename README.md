@@ -9,82 +9,9 @@ SSPanel notification email (PUSH)
 
 # 步骤  
 
-进入网站根目录，进入/app/Command目录，编辑XCat.php文件，在第43行前面插入  
+### 将'ExtMail.php'上传至 'src/Command' 覆盖源文件  
 
-            case("sendUserMessage"):
-                return DailyMail::sendUserMessage();
-            case("sendAdminMessage"):
-                return DailyMail::sendAdminMessage();
-
-插入后保存  
-![](/pic/send-all-user-notices-1.png)  
-然后编辑DailyMail.php文件  
-![](/pic/send-all-user-notices-2.png)  
-在第63行插入  
-
-	public function sendUserMessage() #sendUserMessage,给用户发送通知
-    {
-		$users = User::all();
-		
-        foreach ($users as $user) {
-            if ($user->email_Notification==0) {
-                #管理员账户email_Notification设为1,用户设为0
-				echo "Sending:".$user->id."... Done.\r\n";
-                $subject = "全体通知"; #邮件标题
-                $to = $user->email;
-
-                try {
-                    Mail::send($to, $subject, 'news/Message.tpl', [
-                        "user" => $user
-                    ], [
-                    ]);
-                } catch (Exception $e) {
-                    echo $e->getMessage();
-                }
-            }
-        }
-    }
-	
-    public function sendAdminMessage() #sendAdminMessage,给管理员发送通知,用于测试发送效果
-    {
-		$users = User::all();
-		
-        foreach ($users as $user) {
-            if ($user->email_Notification==1) {
-                #管理员账户email_Notification设为1,用户设为0
-				echo "Sending:".$user->id."... Done.\r\n";
-                $subject = "全体通知"; #邮件标题
-                $to = $user->email;
-
-                try {
-                    Mail::send($to, $subject, 'news/Message.tpl', [
-                        "user" => $user
-                    ], [
-                    ]);
-                } catch (Exception $e) {
-                    echo $e->getMessage();
-                }
-            }
-        }
-    }
-
-然后进入网站根目录的/resources/email/news文件夹，创建Message.tpl文件，文件内容如下  
-
-```  
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta name="viewport" content="width=device-width"/>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
-
-<body>
-<p>您好，{$user->user_name}。</p>
-</body>
-
-</html>
-```  
+### 将'message2.tpl'上传至 'resources/email/ext'
 
 然后就是给user表新增一个字段了，登陆phpmyadmin，选中sspanel，user  
 ![](/pic/send-all-user-notices-3.png)  
@@ -104,8 +31,8 @@ SSPanel notification email (PUSH)
 
 # 使用
 
-`php xcat sendUserMessage` ，给用户发送通知  
-`php xcat sendAdminMessage` ，给管理员发送通知，用于测试发送效果  
+`php xcat ExtMail sendUserMessage` ，给用户发送通知  
+`php xcat ExtMail sendAdminMessage` ，给管理员发送通知，用于测试发送效果  
 
 
 Reference: https://sspanel3.org/send-all-user-notices/  
