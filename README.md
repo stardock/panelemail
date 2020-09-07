@@ -22,7 +22,7 @@ SSPanel notification email (PUSH)
 ![](/pic/send-all-user-notices-2.png)  
 在第63行插入  
 
-	public static function sendUserMessage() #sendUserMessage,给用户发送通知
+	public function sendUserMessage() #sendUserMessage,给用户发送通知
     {
 		$users = User::all();
 		
@@ -45,7 +45,7 @@ SSPanel notification email (PUSH)
         }
     }
 	
-    public static function sendAdminMessage() #sendAdminMessage,给管理员发送通知,用于测试发送效果
+    public function sendAdminMessage() #sendAdminMessage,给管理员发送通知,用于测试发送效果
     {
 		$users = User::all();
 		
