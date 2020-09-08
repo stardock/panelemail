@@ -26,7 +26,7 @@ SSPanel notification email (PUSH)
 ![](/pic/send-all-user-notices-8.png)  
 改成1，点执行  
 ![](/pic/send-all-user-notices-9.png)  
-至此，基本功能已经实现了，ssh连接到服务器，进入网站根目录，php xcat ExtMail sendAdminMessage一下看看效果  
+至此，基本功能已经实现了，ssh连接到服务器，进入网站根目录，`php xcat ExtMail sendAdminMessage` 一下看看效果  
 ![](/pic/send-all-user-notices-10.png)  
 ![](/pic/send-all-user-notices-12.png)  
 
